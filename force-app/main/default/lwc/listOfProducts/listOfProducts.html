@@ -2,7 +2,7 @@
     <template if:true={products.data}>
                 <template for:each={products.data} for:item="product">
                     <lightning-layout-item padding="around-small" key={product.Id} size="3">
-                        <c-tile product={product}></c-tile>
+                        <c-tile product={product} onclicked={handleTileClicked} onbuy={handleBuy} oncompare={handleCompare}></c-tile>
                     </lightning-layout-item>
                 </template>
     </template>

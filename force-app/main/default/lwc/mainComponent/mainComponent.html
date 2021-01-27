@@ -1,7 +1,16 @@
 <template>
-    <lightning-layout multiple-rows title="zadatak">
+    <lightning-layout multiple-rows title="Product App">
+        <lightning-layout-item size="6" title="Checkout">
+            <c-buy></c-buy>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" title="Compare">
+            <c-compare></c-compare>
+        </lightning-layout-item>
         <lightning-layout-item size="8" title="List">
-            <c-list-of-products products={products}></c-list-of-products>
+            <c-list-of-products products={products} ontileclicked={handleTileClicked} onbuy={handleBuy} oncompare={handleCompare}></c-list-of-products>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" title="Detail">
+            <c-detail selected-product-id={selectedProductId} onbuy={handleBuy} oncompare={handleCompare}></c-detail>
         </lightning-layout-item>
     </lightning-layout>
 </template>
