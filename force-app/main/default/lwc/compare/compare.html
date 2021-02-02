@@ -4,33 +4,37 @@
             <lightning-layout-item size="4">
                 <template if:true={product1Id}>
                     <c-detail compare selected-product-id={product1Id}></c-detail>
+                    <button onclick={handleDelete1}> Delete</button>
                 </template>
-                <template if:false={product1Id}>
+                <!-- <template if:false={product1Id}>
                     <p>
                         Please Select Product For Comparassion.
                     </p>
-                </template>
+                </template> -->
             </lightning-layout-item>
             <lightning-layout-item size="4">
                 <template if:true={product2Id}>
                         <c-detail compare selected-product-id={product2Id}></c-detail>
+                        <button onclick={handleDelete2}>Delete</button>
                 </template>
-                <template if:false={product2Id}>
+                <!-- <template if:false={product2Id}>
                     <p>
                         Please Select Product For Comparassion.
                     </p>
-                </template>
+                </template> -->
             </lightning-layout-item>
             <lightning-layout-item size="4">
                 <template if:true={product3Id}>
                         <c-detail compare selected-product-id={product3Id}></c-detail>
+                        <button onclick={handleDelete3}>Delete</button>
                 </template>
-                <template if:false={product3Id}>
+                <!-- <template if:false={product3Id}>
                     <p>
                         Please Select Product For Comparassion.
                     </p>
-                </template>
+                </template> -->
             </lightning-layout-item>
         </lightning-layout>
     </lightning-card>
+    
 </template>

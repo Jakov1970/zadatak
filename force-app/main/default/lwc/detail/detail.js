@@ -5,6 +5,7 @@ import ID_FIELD from '@salesforce/schema/Product2.Id';
 import NAME_FIELD from '@salesforce/schema/Product2.Name';
 import DESCRIPTION_FIELD from '@salesforce/schema/Product2.Description';
 import PRICE_FIELD from '@salesforce/schema/Product2.Currency__c';
+import PICTURE_FIELD from '@salesforce/schema/Product2.Image__c';
 
 const FIELDS = [ID_FIELD,NAME_FIELD,DESCRIPTION_FIELD,PRICE_FIELD];
 
@@ -33,6 +34,10 @@ export default class Detail extends LightningElement {
     }
     get price() {
         return getFieldValue(this.product, PRICE_FIELD);
+    }
+
+    get picture() {
+        return getFieldValue(this.product, PICTURE_FIELD);
     }
 
     handleBuy(){
