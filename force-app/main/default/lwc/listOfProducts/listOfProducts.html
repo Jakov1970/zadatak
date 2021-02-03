@@ -4,7 +4,7 @@
             <lightning-layout multiple-rows>
                 <template for:each={products.data} for:item="product">
                     <lightning-layout-item padding="around-small" key={product.Id} size="3">
-                        <c-tile product={product} onclicked={handleTileClicked} onbuy={handleBuy} oncompare={handleCompare}></c-tile>
+                        <c-tile product={product} onclicked={handleTileClicked} onbuy={handleBuy} oncompare={handleCompare} ondelete={handleDelete}></c-tile>
                     </lightning-layout-item>
                 </template>
             </lightning-layout>

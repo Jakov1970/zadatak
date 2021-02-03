@@ -3,6 +3,7 @@
         <lightning-card title={product.Name}>
             <lightning-button label="Comp" slot="actions" onclick={handleCompare}></lightning-button>
             <lightning-button label="Buy" slot="actions" onclick={handleBuy}></lightning-button>
+            <lightning-button label="Delete" slot="actions" onclick={handleDelete}></lightning-button>
             <div>Price: <lightning-formatted-number value={product.Currency__c} format-style="currency" maximum-fraction-digits="2"></lightning-formatted-number></div>
             <div>Description: {product.Description}</div>
         </lightning-card>

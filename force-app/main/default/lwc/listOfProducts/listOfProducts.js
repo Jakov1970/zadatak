@@ -22,4 +22,10 @@ export default class ListOfProducts extends LightningElement {
         const ev = new CustomEvent('compare',{detail:compId});
         this.dispatchEvent(ev);
     }
+
+    handleDelete(event){
+        const deleteId = event.detail;
+        const ev = new CustomEvent('delete',{detail:deleteId});
+        this.dispatchEvent(ev);
+    }
 }

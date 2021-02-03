@@ -21,4 +21,10 @@ export default class Tile extends LightningElement {
         this.dispatchEvent(event);
     }
 
+    //dodao sam ovo
+    handleDelete() {
+        const event = new CustomEvent('delete', {detail: this.product.Id});
+        this.dispatchEvent(event);
+    }
+
 }

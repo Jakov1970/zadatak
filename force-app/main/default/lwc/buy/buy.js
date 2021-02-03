@@ -2,7 +2,7 @@ import { LightningElement, api } from 'lwc';
 
 const columns = [
     {label: 'Name', fieldName: 'Name', type: 'text'},
-    //{label: 'Amount', fieldName: 'Amount', type: 'number'} //dodao sam
+    {label: 'Description', fieldName: 'Description', type: 'text'}, //dodao sam
     {label: 'Price', fieldName: 'Currency__c', type: 'currency'}
 ];
 

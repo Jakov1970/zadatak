@@ -52,4 +52,10 @@ export default class Detail extends LightningElement {
         this.dispatchEvent(event);
     }
 
+    handleDelete(){
+        const deleteId = getFieldValue(this.product, ID_FIELD);
+        const event = new CustomEvent('delete',{detail:deleteId});
+        this.dispatchEvent(event);
+    }
+
 }

@@ -7,10 +7,10 @@
             <c-compare></c-compare>
         </lightning-layout-item>
         <lightning-layout-item size="8" title="List">
-            <c-list-of-products products={products} ontileclicked={handleTileClicked} onbuy={handleBuy} oncompare={handleCompare}></c-list-of-products>
+            <c-list-of-products products={products} ontileclicked={handleTileClicked} onbuy={handleBuy} oncompare={handleCompare} ondelete={handleDelete}></c-list-of-products>
         </lightning-layout-item>
         <lightning-layout-item size="4" title="Detail">
-            <c-detail selected-product-id={selectedProductId} onbuy={handleBuy} oncompare={handleCompare}></c-detail>
+            <c-detail selected-product-id={selectedProductId} onbuy={handleBuy} oncompare={handleCompare} ondelete={handleDelete}></c-detail>
         </lightning-layout-item>
     </lightning-layout>
 </template>

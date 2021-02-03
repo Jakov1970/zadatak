@@ -9,7 +9,8 @@ export default class MainComponent extends LightningElement {
     selectedProductId;
     boughtProducts=[];
     //something;
-    amount = 1;
+    //amount = 1;
+    
 
     handleTileClicked(event){
         this.selectedProductId = event.detail;
@@ -21,9 +22,14 @@ export default class MainComponent extends LightningElement {
 
     handleBuy(event){
         const productId = event.detail;
+        //this.products.data.amount = 1;  //dodao sam ovo
         this.products.data.forEach(prod => {
             if(prod.Id == productId){
-                
+                //if(!this.boughtProducts.indexOf(productId)){
+                    //const amount = 
+                    
+                //}
+                //else                                
                     this.boughtProducts.push(prod);
                 
             }
@@ -31,23 +37,39 @@ export default class MainComponent extends LightningElement {
         this.template.querySelector('c-buy').setProducts(this.boughtProducts);
     }
 
+    //ja sam dodao
+    handleDelete(event){
+        const productId = event.detail;
+        this.products.data.forEach(prod =>{
+            if(prod.Id ==productId){
+                this.boughtProducts.pop(prod);
+            }
+        })
+        this.template.querySelector('c-buy').setProducts(this.boughtProducts);
+    }
+
+    //Andjelino resenje
+    // handleBuy(event){
+    //     const productId = event.detail;
+    //     this.products.data.forEach(product => {
+    //          if(product.Id == productId){
+    //             if(this.boughtProducts.has(productId)){
+    //                 //console.log(this.boughtProducts.has(productId));
+    //                   let i = this.boughtProducts.get(productId) + 1;
+    //                   this.boughtProducts.set(productId, i);
+    //              }
+    //              else
+    //                  this.boughtProducts.set(productId, 1);
+    //          }
+    //     });
+    //     this.template.querySelector('c-buy').setProducts(this.boughtProducts);
+    // }
+
     //ako ga ima u this.data, onda da updatujete njegov field amout koji cemo da napravimo. 
-    //ako ocemo novi fild na objekat, kazemo this.data.objekat.ime filde i dodeli mu vrednost i automatski napravi novi field
+    //ako ocemo novi fild na objekat, kazemo this.data.objekat.ime filda i dodeli mu vrednost i automatski napravi novi field
 
     //da proverimo da li u data postoji taj objekat
     
-
-    //moj kod
-    //----------------------------------
-    // handleDelete(event){
-    //     const productId = event.detail;
-    //     this.products.data.forEach(prod =>{
-    //         if(prod.Id ==productId){
-    //             this.boughtProducts.pop(prod);
-    //         }
-    //     })
-    // }
-    //----------------------------------
 
     handleCompare(event){
         const productId = event.detail;
