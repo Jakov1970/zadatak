@@ -10,4 +10,7 @@
             </lightning-layout>
         </div>    
     </template>
+    <template if:true={products.error}>
+        <p>ERROR: {products.error.body.message} </p>
+    </template>
 </template>

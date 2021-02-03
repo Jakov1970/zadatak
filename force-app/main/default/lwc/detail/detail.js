@@ -5,9 +5,9 @@ import ID_FIELD from '@salesforce/schema/Product2.Id';
 import NAME_FIELD from '@salesforce/schema/Product2.Name';
 import DESCRIPTION_FIELD from '@salesforce/schema/Product2.Description';
 import PRICE_FIELD from '@salesforce/schema/Product2.Currency__c';
-import PICTURE_FIELD from '@salesforce/schema/Product2.Image__c';
+import PICTURE_FIELD from '@salesforce/schema/Product2.Picture__c';
 
-const FIELDS = [ID_FIELD,NAME_FIELD,DESCRIPTION_FIELD,PRICE_FIELD];
+const FIELDS = [ID_FIELD,NAME_FIELD,DESCRIPTION_FIELD,PRICE_FIELD,PICTURE_FIELD];
 
 export default class Detail extends LightningElement {
 
