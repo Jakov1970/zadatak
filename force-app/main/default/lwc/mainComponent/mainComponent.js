@@ -40,11 +40,34 @@ export default class MainComponent extends LightningElement {
     //ja sam dodao
     handleDelete(event){
         const productId = event.detail;
+
+
+        // for (var i = this.products.data.length - 1; i >= 0; i--) {
+        //     if (this.products.data[i] === productId) {
+        //      this.products.data.splice(i, 1);
+        //     }
+        // }
+
+        //this.boughtProducts = this.boughtProducts.filter(product => product !== productId);
+
+
         this.products.data.forEach(prod =>{
-            if(prod.Id ==productId){
-                this.boughtProducts.pop();
+            if(prod.Id == productId){                               
+                this.products.data.splice(prod, 1);                
             }
         })
+
+        // const last = this.boughtProducts[this.boughtProducts.length - 1];
+
+        // this.boughtProducts.forEach( i => {
+        //     if(i.Id==last){
+        //         this.boughtProducts.pop(); 
+        //     }
+        //     else{
+        //         alert('Nije to taj');
+        //     }
+        // })
+
         this.template.querySelector('c-buy').setProducts(this.boughtProducts);
     }
 
