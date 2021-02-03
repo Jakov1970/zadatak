@@ -42,7 +42,7 @@ export default class MainComponent extends LightningElement {
         const productId = event.detail;
         this.products.data.forEach(prod =>{
             if(prod.Id ==productId){
-                this.boughtProducts.pop(prod);
+                this.boughtProducts.pop();
             }
         })
         this.template.querySelector('c-buy').setProducts(this.boughtProducts);

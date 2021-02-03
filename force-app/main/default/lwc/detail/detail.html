@@ -5,7 +5,7 @@
                 <lightning-button slot="actions" label="Compare" onclick={handleCompare}></lightning-button>
                 <lightning-button slot="actions" label="Buy" onclick={handleBuy}></lightning-button>
                 <lightning-button slot="actions" label="Delete" onclick={handleDelete} ></lightning-button>
-                <img src={picture} alt="Product Image" style="max-width: 100px;"/>
+                <img src={picture} alt="Product Image" style="max-width: 400px;"/>
             </template>  
             
             <div>Price: <lightning-formatted-number value={price} format-style="currency" currency-code="USD" maximum-fraction-digits="2"></lightning-formatted-number></div>
