@@ -6,11 +6,10 @@
                             data={data}
                             columns={columns}
                             hide-checkbox-column>
-                            <!-- onrowaction={handleRowAction}>      dodao sam -->
                     </lightning-datatable>
                     </div>
-                    <div>
-                          Total Price: <lightning-formatted-number value={total} format-style="currency" maximum-fraction-digits="2"></lightning-formatted-number>
+                    <div style="margin-left: 20px;">
+                             Total Price:  <lightning-formatted-number value={total} format-style="currency" maximum-fraction-digits="2"></lightning-formatted-number>
                     </div>
     </lightning-card>    
 </template>

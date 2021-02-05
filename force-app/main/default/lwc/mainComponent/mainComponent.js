@@ -7,92 +7,74 @@ export default class MainComponent extends LightningElement {
     products;
 
     selectedProductId;
-    boughtProducts=[];
-    //something;
-    //amount = 1;
-    
+    boughtProducts = new Map();
+    listOfProducts = [];
 
     handleTileClicked(event){
         this.selectedProductId = event.detail;
     }
 
-    //ovde treba da proverimo da li postoji taj produkt i ako postoji da povecamo amount, onda kad prosledimo u set product ovaj boughtProducts treba da radi
-    //dodali smo polja na tabelu
-    //
-
     handleBuy(event){
-        const productId = event.detail;
-        //this.products.data.amount = 1;  //dodao sam ovo
-        this.products.data.forEach(prod => {
-            if(prod.Id == productId){
-                //if(!this.boughtProducts.indexOf(productId)){
-                    //const amount = 
-                    
-                //}
-                //else                                
-                    this.boughtProducts.push(prod);
-                
-            }
-        });//amount, provera da li postioji
-        this.template.querySelector('c-buy').setProducts(this.boughtProducts);
+        const id = event.detail;
+        this.products.data.forEach(product => 
+        {
+             if(product.Id == id)
+             {
+                if(!this.boughtProducts.has(id))
+                 {
+                    console.log('Usli smo u f-ju koja dodaje objekat u slucaju kada on ne postoji u tabeli');
+                    const existingProduct = { Name: product.Name, Currency__c: product.Currency__c, Amount: 1 };
+                    console.log(existingProduct);
+                    this.boughtProducts.set(id, 1);
+                    this.listOfProducts.push(existingProduct);
+                 }
+                 else 
+                 {               
+                      console.log('Ovo se aktivira u slucaju da objekat vec postoji u tabeli');
+                      let i = this.boughtProducts.get(id) + 1;
+                      this.boughtProducts.set(id, i);
+                      console.log('Ispisi mi promenljivu: ' + i);
+                      for(let p = 0; p < this.listOfProducts.length; p++)
+                      {
+                          if(this.listOfProducts[p].Name == product.Name)
+                          {
+                              this.listOfProducts[p].Amount++;
+                          }
+                      }
+                 }             
+             }
+        })        
+        this.template.querySelector('c-buy').setProducts(this.listOfProducts);
     }
 
-    //ja sam dodao
     handleDelete(event){
         const productId = event.detail;
+        console.log('obrisalo se nesto');
+        console.log(productId);
 
-
-        // for (var i = this.products.data.length - 1; i >= 0; i--) {
-        //     if (this.products.data[i] === productId) {
-        //      this.products.data.splice(i, 1);
-        //     }
-        // }
-
-        //this.boughtProducts = this.boughtProducts.filter(product => product !== productId);
-
-
-        this.products.data.forEach(prod =>{
-            if(prod.Id == productId){                               
-                this.products.data.splice(prod, 1);                
+        this.products.data.forEach( product => {
+            if(product.Id == productId){
+                if(!this.boughtProducts.has(productId)){
+                }
+                else
+                {
+                    for(let p = 0; p < this.listOfProducts.length; p++)
+                      {
+                          if(this.listOfProducts[p].Name == product.Name)
+                          {
+                              this.listOfProducts[p].Amount--;
+                              if(this.listOfProducts[p].Amount == 0){
+                                this.boughtProducts.delete(productId);
+                                delete this.listOfProducts[productId];
+                                this.listOfProducts.splice(p, 1);
+                              }
+                          }
+                      }                      
+                }
             }
         })
-
-        // const last = this.boughtProducts[this.boughtProducts.length - 1];
-
-        // this.boughtProducts.forEach( i => {
-        //     if(i.Id==last){
-        //         this.boughtProducts.pop(); 
-        //     }
-        //     else{
-        //         alert('Nije to taj');
-        //     }
-        // })
-
-        this.template.querySelector('c-buy').setProducts(this.boughtProducts);
-    }
-
-    //Andjelino resenje
-    // handleBuy(event){
-    //     const productId = event.detail;
-    //     this.products.data.forEach(product => {
-    //          if(product.Id == productId){
-    //             if(this.boughtProducts.has(productId)){
-    //                 //console.log(this.boughtProducts.has(productId));
-    //                   let i = this.boughtProducts.get(productId) + 1;
-    //                   this.boughtProducts.set(productId, i);
-    //              }
-    //              else
-    //                  this.boughtProducts.set(productId, 1);
-    //          }
-    //     });
-    //     this.template.querySelector('c-buy').setProducts(this.boughtProducts);
-    // }
-
-    //ako ga ima u this.data, onda da updatujete njegov field amout koji cemo da napravimo. 
-    //ako ocemo novi fild na objekat, kazemo this.data.objekat.ime filda i dodeli mu vrednost i automatski napravi novi field
-
-    //da proverimo da li u data postoji taj objekat
-    
+        this.template.querySelector('c-buy').setProducts(this.listOfProducts);
+    }    
 
     handleCompare(event){
         const productId = event.detail;
